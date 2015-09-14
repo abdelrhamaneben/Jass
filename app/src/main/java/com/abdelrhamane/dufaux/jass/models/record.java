@@ -1,14 +1,12 @@
 package com.abdelrhamane.dufaux.jass.models;
 
-import java.io.ByteArrayInputStream;
-
 /**
  * Created by abdelrhamanebenhammou on 14/09/15.
  */
 public class record {
     private String filename;
     private boolean favorite;
-    
+
     /**
      *  Constructor
      * @param filename
@@ -18,6 +16,8 @@ public class record {
     }
 
     /*** GETTERS AND SETTERS ****/
+
+
     public String getFilename() {
         return filename;
     }
