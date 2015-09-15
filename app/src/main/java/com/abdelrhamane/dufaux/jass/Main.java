@@ -21,7 +21,11 @@ public class Main extends OrmLiteBaseActivity<DatabaseHelper> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RuntimeExceptionDao<record, Integer> simpleDao = null;
+        Intent intent = new Intent(Main.this, recorder_activity.class);
+        startActivity(intent);
+
+
+        /*RuntimeExceptionDao<record, Integer> simpleDao = null;
         try {
             simpleDao = getHelper().getRuntimeExceptionDao(record.class);
         } catch (Exception e) {
@@ -35,6 +39,6 @@ public class Main extends OrmLiteBaseActivity<DatabaseHelper> {
 
         for(record i : Result) {
             System.out.println(i.toString());
-        }
+        }*/
     }
 }
