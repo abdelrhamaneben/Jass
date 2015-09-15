@@ -2,39 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/abdelrhamanebenhammou/AndroidStudioProjects/Jass/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jar="/Users/abdelrhamanebenhammou/AndroidStudioProjects/Jass/app/libs/ormlite-core-4.48.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="/Users/abdelrhamanebenhammou/AndroidStudioProjects/Jass/app/build/intermediates/pre-dexed/debug/classes-27270cc6057b26c233c4c88cb4f43180a0c0e886.jar" />
-    </item>
-    <item
-        jar="/Users/abdelrhamanebenhammou/AndroidStudioProjects/Jass/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/Users/abdelrhamanebenhammou/AndroidStudioProjects/Jass/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-e2922e4af102b0f9615367b7e26a4091f08acf18.jar" />
-    </item>
-    <item
-        jar="/Users/abdelrhamanebenhammou/AndroidStudioProjects/Jass/app/libs/ormlite-android-4.48.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="afa06f539a4026c10b247386312aa67404b80a16">
-        <dex dex="/Users/abdelrhamanebenhammou/AndroidStudioProjects/Jass/app/build/intermediates/pre-dexed/debug/ormlite-android-4.48-a727ccaf34cfb85284ecdc86c35189dbe2408045.jar" />
-    </item>
-    <item
-        jar="/Users/abdelrhamanebenhammou/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="/Users/abdelrhamanebenhammou/AndroidStudioProjects/Jass/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-2e533f6262833fed22a5508bb57935624085085a.jar" />
-    </item>
-    <item
-        jar="/Users/abdelrhamanebenhammou/AndroidStudioProjects/Jass/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/Users/abdelrhamanebenhammou/AndroidStudioProjects/Jass/app/build/intermediates/pre-dexed/debug/classes-7a14d06d61efabe41457922614f51ee6d8271a04.jar" />
+        sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5">
+        <dex dex="/Users/abdelrhamanebenhammou/AndroidStudioProjects/Jass/app/build/intermediates/pre-dexed/debug/ormlite-core-4.48-4926e4d1e6ff7c30b448ebdb92a0e7406a03ccdc.jar" />
     </item>
 
 </items>
