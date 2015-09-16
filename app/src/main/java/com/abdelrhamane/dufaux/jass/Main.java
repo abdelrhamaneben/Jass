@@ -5,27 +5,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.abdelrhamane.dufaux.jass.models.DatabaseHelper;
-import com.abdelrhamane.dufaux.jass.models.record;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
-import com.j256.ormlite.dao.RuntimeExceptionDao;
 
-import java.sql.SQLException;
-import java.util.List;
-
+/**
+ *
+ */
 public class Main extends OrmLiteBaseActivity<DatabaseHelper> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Button newSound = (Button) findViewById(R.id.Main_activity_NewSound);
 
-        Intent intent = new Intent(Main.this, recorder_activity.class);
-        startActivity(intent);
+        newSound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main.this, recorder_activity.class);
+                startActivity(intent);
+            }
+        });
 
 
-        /*RuntimeExceptionDao<record, Integer> simpleDao = null;
+       /* RuntimeExceptionDao<record, Integer> simpleDao = null;
         try {
             simpleDao = getHelper().getRuntimeExceptionDao(record.class);
         } catch (Exception e) {

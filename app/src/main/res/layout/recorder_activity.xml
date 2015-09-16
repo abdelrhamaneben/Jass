@@ -5,25 +5,66 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".Main"
-    android:background="@color/accent_material_light">
+    android:background="@android:color/background_light">
 
-    <Button
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonRecord"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Sauvegarde un son en moins de 10 s"
+        android:id="@+id/textView3"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
-        android:text="@string/Record"
-        android:background="#697d90" />
+        android:textSize="@dimen/abc_action_bar_content_inset_material"
+        android:gravity="center_horizontal"
+        android:textColor="#010101"
+        android:background="@color/foreground_material_dark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="10"
+        android:id="@+id/Recorder_activity_LabelTimer"
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="@dimen/abc_action_bar_default_height_material"
+        android:layout_above="@+id/Recorder_activity_BtnRecord"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:textIsSelectable="true" />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonStopPlay"
-        android:layout_marginTop="52dp"
+        android:id="@+id/Recorder_activity_BtnRecord"
+        android:text="@string/Record"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/abc_action_button_min_width_overflow_material"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/abc_search_url_text_normal" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Recorder_activity_BtnStopPlay"
         android:text="@string/Stop"
-        android:background="#697d90"
-        android:layout_below="@+id/buttonRecord"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/abc_action_button_min_width_overflow_material"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="119dp"
+        android:background="@color/primary_dark_material_light" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&lt;-"
+        android:id="@+id/Recorder_activity_BtnReturn"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

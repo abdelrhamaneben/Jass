@@ -31,6 +31,13 @@ public class record {
         this.filename = null;
     }
 
+    public record(String filename) {
+        this.name = "unknow";
+        this.filename = filename;
+        this.favorite = false;
+        this.durate = 0;
+    }
+
     public record(String name, String filename, boolean favorite, int durate) {
         this.name = name;
         this.filename = filename;
