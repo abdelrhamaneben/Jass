@@ -3,11 +3,18 @@ package com.abdelrhamane.dufaux.jass.models;
 /**
  * Created by abdelrhamanebenhammou on 14/09/15.
  */
+import android.media.MediaPlayer;
+import android.media.MediaRecorder;
+import android.os.Environment;
+
+import com.abdelrhamane.dufaux.jass.Exceptions.AlreadyListeningException;
+import com.abdelrhamane.dufaux.jass.Exceptions.NoListeningException;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -23,7 +30,12 @@ public class record {
     @DatabaseField
     private int durate;
 
+    // No Persistante Properties
+    private MediaRecorder myAudioRecorder;
+    private String outDirectory =   Environment.getExternalStorageDirectory().getAbsolutePath() + "/";
 
+
+    // Contructors
     public record() {
         this.name = null;
         this.favorite = false;
@@ -46,7 +58,7 @@ public class record {
     }
 
 
-    // CRUD
+    // DAO Functions
 
     /**
      *  Return the list of all record
@@ -84,6 +96,45 @@ public class record {
         }
     }
 
+    // Media Functions
+
+    /**
+     *
+     * @throws IOException
+     * @throws AlreadyListeningException
+     */
+    public void record() throws IOException, AlreadyListeningException {
+        if(myAudioRecorder != null) throw new AlreadyListeningException();
+        myAudioRecorder=new MediaRecorder();
+        myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        myAudioRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
+        myAudioRecorder.setOutputFile(this.outDirectory + this.filename);
+        myAudioRecorder.prepare();
+        myAudioRecorder.start();
+    }
+
+    /**
+     *
+     * @throws NoListeningException
+     */
+    public void stop() throws NoListeningException {
+        if(myAudioRecorder == null) throw new NoListeningException();
+        myAudioRecorder.stop();
+        myAudioRecorder.release();
+        myAudioRecorder = null;
+    }
+
+    /**
+     *
+     * @throws IOException
+     */
+    public void play() throws IOException {
+        MediaPlayer m = new MediaPlayer();
+        m.setDataSource(this.outDirectory + this.filename);
+        m.prepare();
+        m.start();
+    }
 
     // GETTERS AND SETTERS
     public String getName() {
