@@ -14,6 +14,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.List;
 public class record {
     @DatabaseField
     private String name;
-    @DatabaseField(index = true)
+    @DatabaseField(index = true, id = true)
     private String filename;
     @DatabaseField
     private boolean favorite;
@@ -33,7 +34,6 @@ public class record {
     // No Persistante Properties
     private MediaRecorder myAudioRecorder;
     private String outDirectory =   Environment.getExternalStorageDirectory().getAbsolutePath() + "/";
-
 
     // Contructors
     public record() {
@@ -85,7 +85,6 @@ public class record {
 
     /**
      * Save the current Record in DataBase
-     * @param myDAO
      */
     public void save(RuntimeExceptionDao<record, Integer> myDAO) {
         if(myDAO.queryForEq("filename", this.filename).isEmpty()) {
@@ -94,6 +93,12 @@ public class record {
         else {
             myDAO.update(this);
         }
+    }
+
+    public boolean delete() {
+        File file = new File(this.outDirectory + this.filename);
+        return file.delete();
+
     }
 
     // Media Functions

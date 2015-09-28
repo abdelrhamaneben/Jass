@@ -28,13 +28,22 @@
         android:layout_height="wrap_content"
         android:text="Nouveau Son"
         android:id="@+id/Main_activity_NewSound"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="121dp"
+        android:layout_marginTop="47dp"
         android:textColor="@android:color/primary_text_dark_nodisable"
         android:background="#63ff95"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2"
+        android:layout_below="@+id/textView2"
         android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
+        android:layout_alignStart="@+id/textView2"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listRecord"
+        android:layout_below="@+id/Main_activity_NewSound"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="47dp" />
 
 </RelativeLayout>
