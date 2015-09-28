@@ -60,6 +60,7 @@ public class recorder_activity extends OrmLiteBaseActivity<DatabaseHelper> {
         stop_play.setEnabled(false);
         record.setEnabled(true);
         record.setBackgroundResource(R.color.vert);
+        stop_play.setBackgroundResource(R.color.gris);
         timerLabel.setText(String.valueOf(timer));
         state = State_E.RECORDABLE;
         this.enregistrement = new record((new Date().getTime()) + ".3gp");
@@ -134,11 +135,12 @@ public class recorder_activity extends OrmLiteBaseActivity<DatabaseHelper> {
                 this.enregistrement.record();
                 state = State_E.STOPABLE;
                 record.setEnabled(false);
-                record.setBackgroundResource(R.color.rouge);
-                launchTimer();
+                record.setBackgroundResource(R.color.gris);
+                stop_play.setBackgroundResource(R.color.rouge);
                 record.setEnabled(false);
                 stop_play.setEnabled(true);
-                display_alert( "Recording started");
+                display_alert("Recording started");
+                launchTimer();
             }
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -155,6 +157,7 @@ public class recorder_activity extends OrmLiteBaseActivity<DatabaseHelper> {
         try {
             this.enregistrement.play();
             display_alert("Playing audio");
+            initRecorder();
         } catch (Exception e) {
             display_alert(e.getMessage());
             initRecorder();
@@ -170,7 +173,7 @@ public class recorder_activity extends OrmLiteBaseActivity<DatabaseHelper> {
             this.enregistrement.stop();
             state = State_E.PLAYABLE;
             stop_play.setText("Play");
-            System.out.println("Can play");
+            stop_play.setBackgroundResource(R.color.bleu);
             display_alert( "Audio recorded successfully");
             scheduler.interrupt();
             askName();
