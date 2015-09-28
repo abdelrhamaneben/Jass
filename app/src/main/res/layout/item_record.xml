@@ -17,7 +17,7 @@
         android:text="Play"
         android:id="@+id/play_btn"
         android:textSize="@dimen/abc_action_bar_overflow_padding_end_material"
-        android:background="#477ebb"
+        android:background="@color/bleu"
         android:textColor="@android:color/white"
         android:layout_margin="@dimen/abc_action_bar_subtitle_bottom_margin_material" />
 
@@ -26,7 +26,7 @@
         android:layout_height="32dp"
         android:text="delete"
         android:id="@+id/delete_btn"
-        android:background="#bb4d50"
+        android:background="@color/rouge"
         android:textColor="@android:color/white"
         android:textSize="@dimen/abc_action_bar_overflow_padding_end_material"
         android:layout_margin="@dimen/abc_action_bar_subtitle_bottom_margin_material" />

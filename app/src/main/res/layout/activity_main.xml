@@ -30,7 +30,7 @@
         android:id="@+id/Main_activity_NewSound"
         android:layout_marginTop="47dp"
         android:textColor="@android:color/primary_text_dark_nodisable"
-        android:background="#63ff95"
+        android:background="@color/vert"
         android:layout_below="@+id/textView2"
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2"

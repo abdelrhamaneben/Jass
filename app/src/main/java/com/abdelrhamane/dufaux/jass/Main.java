@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.abdelrhamane.dufaux.jass.models.DatabaseHelper;
 import com.abdelrhamane.dufaux.jass.models.RecordItemAdapter;
@@ -67,7 +68,11 @@ public class Main extends OrmLiteBaseActivity<DatabaseHelper> {
             listView.setAdapter(itemsAdapter);
             itemsAdapter.notifyDataSetChanged();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            display_alert(e.getMessage());
         }
+    }
+
+    private void display_alert(String message){
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 }

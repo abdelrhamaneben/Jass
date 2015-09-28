@@ -59,11 +59,10 @@ public class recorder_activity extends OrmLiteBaseActivity<DatabaseHelper> {
         stop_play.setText(R.string.Stop);
         stop_play.setEnabled(false);
         record.setEnabled(true);
-        record.setBackgroundColor(Color.GREEN);
-
+        record.setBackgroundResource(R.color.vert);
         timerLabel.setText(String.valueOf(timer));
         state = State_E.RECORDABLE;
-        this.enregistrement =  new record((new Date().getTime()) + ".3gp");
+        this.enregistrement = new record((new Date().getTime()) + ".3gp");
     }
 
 
@@ -109,7 +108,6 @@ public class recorder_activity extends OrmLiteBaseActivity<DatabaseHelper> {
                 finish();
             }
         });
-
         controller = this;
     }
 
@@ -136,15 +134,15 @@ public class recorder_activity extends OrmLiteBaseActivity<DatabaseHelper> {
                 this.enregistrement.record();
                 state = State_E.STOPABLE;
                 record.setEnabled(false);
-                record.setBackgroundColor(Color.RED);
+                record.setBackgroundResource(R.color.rouge);
                 launchTimer();
                 record.setEnabled(false);
                 stop_play.setEnabled(true);
-                Toast.makeText(getApplicationContext(), "Recording started", Toast.LENGTH_LONG).show();
+                display_alert( "Recording started");
             }
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+            display_alert(e.getMessage());
             initRecorder();
             return;
         }
@@ -156,9 +154,9 @@ public class recorder_activity extends OrmLiteBaseActivity<DatabaseHelper> {
     protected void _play() {
         try {
             this.enregistrement.play();
-            Toast.makeText(getApplicationContext(), "Playing audio", Toast.LENGTH_LONG).show();
+            display_alert("Playing audio");
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+            display_alert(e.getMessage());
             initRecorder();
             return;
         }
@@ -173,7 +171,7 @@ public class recorder_activity extends OrmLiteBaseActivity<DatabaseHelper> {
             state = State_E.PLAYABLE;
             stop_play.setText("Play");
             System.out.println("Can play");
-            Toast.makeText(getApplicationContext(), "Audio recorded successfully", Toast.LENGTH_LONG).show();
+            display_alert( "Audio recorded successfully");
             scheduler.interrupt();
             askName();
         } catch (NoListeningException e) {
@@ -244,5 +242,9 @@ public class recorder_activity extends OrmLiteBaseActivity<DatabaseHelper> {
                     }
                 });
         alertDialog.show();
+    }
+
+    private void display_alert(String message){
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 }
