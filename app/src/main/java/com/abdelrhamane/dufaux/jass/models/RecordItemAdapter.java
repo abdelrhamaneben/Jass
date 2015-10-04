@@ -36,7 +36,8 @@ public class RecordItemAdapter extends ArrayAdapter<record> {
         }
         // Lookup view for data population
         TextView name = (TextView) convertView.findViewById(R.id.record_name);
-        ImageButton play = (ImageButton) convertView.findViewById(R.id.play_button);
+        final ImageButton play = (ImageButton) convertView.findViewById(R.id.play_button);
+        final ImageButton stop = (ImageButton) convertView.findViewById(R.id.stop_button);
         ImageButton delete = (ImageButton) convertView.findViewById(R.id.delete_button);
         // Populate the data into the template view using the data object
         name.setText(r.getName());
@@ -47,9 +48,21 @@ public class RecordItemAdapter extends ArrayAdapter<record> {
             public void onClick(View v) {
                 try {
                     r.play();
+                    play.setVisibility(View.INVISIBLE);
+                    stop.setVisibility(View.VISIBLE);
                 } catch (IOException e) {
                     System.out.println("Impossible de lire le fichier audio");
                 }
+            }
+        });
+
+        // Stop record
+        stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                r.stopPlay();
+                stop.setVisibility(View.INVISIBLE);
+                play.setVisibility(View.VISIBLE);
             }
         });
 

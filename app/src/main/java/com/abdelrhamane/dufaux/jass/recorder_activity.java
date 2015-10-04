@@ -2,25 +2,18 @@ package com.abdelrhamane.dufaux.jass;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.media.MediaPlayer;
-import android.media.MediaRecorder;
-import android.os.Environment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.abdelrhamane.dufaux.jass.Exceptions.AlreadyListeningException;
 import com.abdelrhamane.dufaux.jass.Exceptions.NoListeningException;
 import com.abdelrhamane.dufaux.jass.models.DatabaseHelper;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 
-import java.io.IOException;
 import java.util.Date;
 
 import com.abdelrhamane.dufaux.jass.models.record;
@@ -171,7 +164,7 @@ public class recorder_activity extends OrmLiteBaseActivity<DatabaseHelper> {
      */
     protected void _stop() {
         try {
-            this.enregistrement.stop();
+            this.enregistrement.stopRecord();
             state = State_E.PLAYABLE;
             stop_play.setText("Play");
             stop_play.setBackgroundResource(R.color.bleu);

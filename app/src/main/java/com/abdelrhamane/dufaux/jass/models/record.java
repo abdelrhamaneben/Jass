@@ -38,6 +38,7 @@ public class record {
     // No Persistante Properties
     private MediaRecorder myAudioRecorder;
     private String outDirectory =   Environment.getExternalStorageDirectory().getAbsolutePath() + "/";
+    private MediaPlayer mediaPlayed = null;
 
     // Contructors
     public record() {
@@ -127,7 +128,7 @@ public class record {
      *
      * @throws NoListeningException
      */
-    public void stop() throws NoListeningException {
+    public void stopRecord() throws NoListeningException {
         if(myAudioRecorder == null) throw new NoListeningException();
         myAudioRecorder.stop();
         myAudioRecorder.release();
@@ -139,11 +140,25 @@ public class record {
      * @throws IOException
      */
     public void play() throws IOException {
-        MediaPlayer m = new MediaPlayer();
-        m.setDataSource(this.outDirectory + this.filename);
-        m.prepare();
-        m.start();
+        stopPlaying();
+        mediaPlayed = new MediaPlayer();
+        mediaPlayed.setDataSource(this.outDirectory + this.filename);
+        mediaPlayed.prepare();
+        mediaPlayed.start();
     }
+
+    public void stopPlay(){
+        stopPlaying();
+    }
+
+    private void stopPlaying() {
+        if (mediaPlayed != null) {
+            mediaPlayed.stop();
+            mediaPlayed.release();
+            mediaPlayed = null;
+        }
+    }
+
 
     // GETTERS AND SETTERS
     public String getName() {
