@@ -4,9 +4,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="Jass">Jass</string>
-    <string name="jass">Just a short sound</string>
+    <string name="description">Just a short sound</string>
     <string name="Record">Record</string>
     <string name="Stop">Stop</string>
     <string name="title_activity_recorder_activity">recorder_activity</string>
+    <string name="retour">retour</string>
 
 </resources>

@@ -1,12 +1,8 @@
 package com.abdelrhamane.dufaux.jass;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -18,7 +14,6 @@ import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -64,7 +59,7 @@ public class Main extends OrmLiteBaseActivity<DatabaseHelper> {
             simpleDao = getHelper().getRuntimeExceptionDao(record.class);
             ArrayList<record> Result = (ArrayList<record>) simpleDao.queryForAll();
             RecordItemAdapter itemsAdapter =
-                    new RecordItemAdapter(this, R.layout.item_record, Result,simpleDao);
+                    new RecordItemAdapter(this, R.layout.item_recorded, Result,simpleDao);
             listView.setAdapter(itemsAdapter);
             itemsAdapter.notifyDataSetChanged();
         } catch (Exception e) {
