@@ -6,9 +6,13 @@ package com.abdelrhamane.dufaux.jass.models;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Environment;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 
 import com.abdelrhamane.dufaux.jass.Exceptions.AlreadyListeningException;
 import com.abdelrhamane.dufaux.jass.Exceptions.NoListeningException;
+import com.abdelrhamane.dufaux.jass.R;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.stmt.QueryBuilder;

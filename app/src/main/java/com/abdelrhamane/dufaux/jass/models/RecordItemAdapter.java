@@ -1,13 +1,12 @@
 package com.abdelrhamane.dufaux.jass.models;
 
-import android.content.ClipData;
 import android.content.Context;
-import android.support.v7.internal.view.menu.MenuView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.abdelrhamane.dufaux.jass.Main;
@@ -16,7 +15,6 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by abdelrhamanebenhammou on 28/09/15.
@@ -34,12 +32,12 @@ public class RecordItemAdapter extends ArrayAdapter<record> {
         final record r = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_record, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_recorded, parent, false);
         }
         // Lookup view for data population
         TextView name = (TextView) convertView.findViewById(R.id.record_name);
-        Button play = (Button) convertView.findViewById(R.id.play_btn);
-        Button delete = (Button) convertView.findViewById(R.id.delete_btn);
+        ImageButton play = (ImageButton) convertView.findViewById(R.id.play_button);
+        ImageButton delete = (ImageButton) convertView.findViewById(R.id.delete_button);
         // Populate the data into the template view using the data object
         name.setText(r.getName());
 
@@ -50,7 +48,7 @@ public class RecordItemAdapter extends ArrayAdapter<record> {
                 try {
                     r.play();
                 } catch (IOException e) {
-                    System.out.println("Impossible de lire le fichier son");
+                    System.out.println("Impossible de lire le fichier audio");
                 }
             }
         });
@@ -61,7 +59,7 @@ public class RecordItemAdapter extends ArrayAdapter<record> {
             public void onClick(View v) {
                 r.delete();
                 myDAO.delete(r);
-                Main activity = (Main)getContext();
+                Main activity = (Main) getContext();
                 activity.LoadList();
 
             }

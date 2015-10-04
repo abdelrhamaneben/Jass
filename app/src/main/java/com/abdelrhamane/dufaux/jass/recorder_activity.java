@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,7 +60,7 @@ public class recorder_activity extends OrmLiteBaseActivity<DatabaseHelper> {
         stop_play.setText(R.string.Stop);
         stop_play.setEnabled(false);
         record.setEnabled(true);
-        record.setBackgroundResource(R.color.vert);
+        record.setBackgroundResource(R.color.bleu);
         stop_play.setBackgroundResource(R.color.gris);
         timerLabel.setText(String.valueOf(timer));
         state = State_E.RECORDABLE;

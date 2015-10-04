@@ -28,10 +28,11 @@
         android:id="@+id/Recorder_activity_LabelTimer"
         android:textColor="@android:color/primary_text_light"
         android:textSize="@dimen/abc_action_bar_default_height_material"
-        android:layout_above="@+id/Recorder_activity_BtnRecord"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp"
-        android:textIsSelectable="true" />
+        android:textIsSelectable="true"
+        android:layout_below="@+id/textView3"
+        android:layout_alignRight="@+id/Recorder_activity_BtnReturn"
+        android:layout_alignEnd="@+id/Recorder_activity_BtnReturn"
+        android:layout_marginTop="49dp" />
 
     <Button
         android:layout_width="fill_parent"
@@ -40,10 +41,11 @@
         android:text="@string/Record"
         android:textColor="#ffffff"
         android:textSize="@dimen/abc_action_button_min_width_overflow_material"
-        android:layout_centerVertical="true"
+        android:background="@color/bleu"
+        android:layout_below="@+id/Recorder_activity_LabelTimer"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@color/vert" />
+        android:layout_marginTop="40dp" />
 
     <Button
         android:layout_width="fill_parent"
@@ -52,17 +54,17 @@
         android:text="@string/Stop"
         android:textColor="#ffffff"
         android:textSize="@dimen/abc_action_button_min_width_overflow_material"
-        android:layout_alignParentBottom="true"
+        android:background="@color/gris"
+        android:layout_below="@+id/Recorder_activity_BtnRecord"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="119dp"
-        android:background="@color/gris" />
+        android:layout_marginTop="40dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="&lt;-"
+        android:text="@string/retour"
         android:id="@+id/Recorder_activity_BtnReturn"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
