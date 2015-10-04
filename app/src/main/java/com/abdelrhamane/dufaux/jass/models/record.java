@@ -135,6 +135,7 @@ public class record {
         myAudioRecorder = null;
     }
 
+
     /**
      *
      * @throws IOException
@@ -145,6 +146,15 @@ public class record {
         mediaPlayed.setDataSource(this.outDirectory + this.filename);
         mediaPlayed.prepare();
         mediaPlayed.start();
+    }
+
+    /**
+     *
+     * @throws IOException
+     */
+    public void play(MediaPlayer.OnCompletionListener callback) throws IOException {
+        this.play();
+        mediaPlayed.setOnCompletionListener(callback);
     }
 
     public void stopPlay(){

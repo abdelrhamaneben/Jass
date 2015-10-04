@@ -1,14 +1,15 @@
 package com.abdelrhamane.dufaux.jass.models;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.abdelrhamane.dufaux.jass.Main;
+import com.abdelrhamane.dufaux.jass.JassWall;
 import com.abdelrhamane.dufaux.jass.R;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
@@ -31,12 +32,13 @@ public class WallItemAdapter extends ArrayAdapter<record> {
         final record r = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_record, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_recorded, parent, false);
         }
         // Lookup view for data population
         TextView name = (TextView) convertView.findViewById(R.id.record_name);
-        Button play = (Button) convertView.findViewById(R.id.play_btn);
-        Button delete = (Button) convertView.findViewById(R.id.delete_btn);
+        final ImageButton play = (ImageButton) convertView.findViewById(R.id.play_button);
+        final ImageButton stop = (ImageButton) convertView.findViewById(R.id.stop_button);
+        ImageButton delete = (ImageButton) convertView.findViewById(R.id.delete_button);
         // Populate the data into the template view using the data object
         name.setText(r.getName());
 
@@ -45,10 +47,31 @@ public class WallItemAdapter extends ArrayAdapter<record> {
             @Override
             public void onClick(View v) {
                 try {
-                    r.play();
+                    MediaPlayer.OnCompletionListener myCallBackFunction = new MediaPlayer.OnCompletionListener()
+                    {
+                        @Override
+                        public void onCompletion(MediaPlayer mp)
+                        {
+                            stop.setVisibility(View.INVISIBLE);
+                            play.setVisibility(View.VISIBLE);
+                        }
+                    };
+                    r.play(myCallBackFunction);
+                    play.setVisibility(View.INVISIBLE);
+                    stop.setVisibility(View.VISIBLE);
                 } catch (IOException e) {
-                    System.out.println("Impossible de lire le fichier son");
+                    System.out.println("Impossible de lire le fichier audio");
                 }
+            }
+        });
+
+        // Stop record
+        stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                r.stopPlay();
+                stop.setVisibility(View.INVISIBLE);
+                play.setVisibility(View.VISIBLE);
             }
         });
 
@@ -58,7 +81,7 @@ public class WallItemAdapter extends ArrayAdapter<record> {
             public void onClick(View v) {
                 r.delete();
                 myDAO.delete(r);
-                Main activity = (Main)getContext();
+                JassWall activity = (JassWall) getContext();
                 activity.LoadList();
 
             }

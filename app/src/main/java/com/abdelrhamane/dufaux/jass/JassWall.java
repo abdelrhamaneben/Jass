@@ -1,6 +1,9 @@
 package com.abdelrhamane.dufaux.jass;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -12,24 +15,51 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 import java.util.ArrayList;
 
+/**
+ *
+ */
 public class JassWall extends OrmLiteBaseActivity<DatabaseHelper> {
 
     private ListView listView;
+    private Button newSound;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.jasswall);
+        setContentView(R.layout.activity_main);
+        newSound = (Button) findViewById(R.id.Main_activity_NewSound);
         listView = (ListView) findViewById(R.id.listRecord);
+
+        //Bouton nouveau Son
+        newSound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(JassWall.this, recorder_activity.class);
+                startActivity(intent);
+            }
+        });
+        LoadList();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.LoadList();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        this.LoadList();
     }
 
     public void LoadList() {
         // Listing des sons
         RuntimeExceptionDao<record, Integer> simpleDao = null;
         try {
-            ArrayList<record> Result = new ArrayList<record>();
             simpleDao = getHelper().getRuntimeExceptionDao(record.class);
+            ArrayList<record> Result = (ArrayList<record>) simpleDao.queryForAll();
             WallItemAdapter itemsAdapter =
-                    new WallItemAdapter(this, R.layout.item_record, Result,simpleDao);
+                    new WallItemAdapter(this, R.layout.item_recorded, Result,simpleDao);
             listView.setAdapter(itemsAdapter);
             itemsAdapter.notifyDataSetChanged();
         } catch (Exception e) {
