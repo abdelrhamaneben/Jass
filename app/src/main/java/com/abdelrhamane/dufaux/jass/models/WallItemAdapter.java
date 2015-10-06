@@ -9,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+
 import com.abdelrhamane.dufaux.jass.JassWall;
 import com.abdelrhamane.dufaux.jass.R;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
@@ -28,6 +31,9 @@ public class WallItemAdapter extends ArrayAdapter<record> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+        final JassWall activity = (JassWall) getContext();
+
         // Get the data item for this position
         final record r = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
@@ -75,14 +81,30 @@ public class WallItemAdapter extends ArrayAdapter<record> {
             }
         });
 
-        // Delete Record
+        // Delete record
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.delete();
-                myDAO.delete(r);
-                JassWall activity = (JassWall) getContext();
-                activity.LoadList();
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
+                alertDialog.setTitle("Confirmer la suppression...");
+                alertDialog.setMessage("Êtes-vous sur de vouloir supprimer cet élément?");
+                alertDialog.setIcon(R.drawable.button_delete);
+
+                alertDialog.setPositiveButton("CONFIRMER", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        r.delete();
+                        myDAO.delete(r);
+                        activity.LoadList();
+                    }
+                });
+                alertDialog.setNegativeButton("ANNULER", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                alertDialog.show();
+
+
 
             }
         });

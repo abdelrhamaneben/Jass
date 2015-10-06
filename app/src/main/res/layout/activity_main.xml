@@ -45,7 +45,12 @@
         android:layout_below="@+id/Main_activity_NewSound"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="47dp" />
+        android:layout_marginTop="47dp"
+        android:longClickable="true"
+        android:listSelector="@android:color/darker_gray"
+        android:scrollingCache="false"
+        android:clickable="true"
+        android:cacheColorHint="@android:color/darker_gray" />
 
     <RelativeLayout
         android:layout_width="match_parent"

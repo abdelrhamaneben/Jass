@@ -1,9 +1,15 @@
 package com.abdelrhamane.dufaux.jass;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -62,6 +68,20 @@ public class JassWall extends OrmLiteBaseActivity<DatabaseHelper> {
                     new WallItemAdapter(this, R.layout.item_recorded, Result,simpleDao);
             listView.setAdapter(itemsAdapter);
             itemsAdapter.notifyDataSetChanged();
+
+            listView.setOnItemLongClickListener(
+                    new OnItemLongClickListener() {
+
+                        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                            record r = (record) parent.getItemAtPosition(position);
+                            askName(r);
+                            return true;
+                        }
+                    }
+
+            );
+
+
         } catch (Exception e) {
             display_alert(e.getMessage());
         }
@@ -70,4 +90,42 @@ public class JassWall extends OrmLiteBaseActivity<DatabaseHelper> {
     private void display_alert(String message){
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
+
+
+    /**
+     * Demande le nom du fichier
+     */
+    private void askName(final record r) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(JassWall.this);
+        alertDialog.setTitle("Nom");
+        alertDialog.setMessage("Entrez le nouveau nom");
+
+        final EditText input = new EditText(JassWall.this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setLayoutParams(lp);
+        alertDialog.setView(input);
+
+        alertDialog.setPositiveButton("Enregistrer",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        r.setName(input.getText().toString());
+                        RuntimeExceptionDao<record, Integer> simpleDao = null;
+                        try {
+                            simpleDao = getHelper().getRuntimeExceptionDao(record.class);
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                        r.save(simpleDao);
+                    }
+                });
+        alertDialog.setNegativeButton("Annuler",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+        alertDialog.show();
+    }
+
 }
