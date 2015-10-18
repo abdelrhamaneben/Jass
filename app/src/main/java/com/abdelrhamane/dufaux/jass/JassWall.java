@@ -3,7 +3,10 @@ package com.abdelrhamane.dufaux.jass;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -19,6 +22,15 @@ import com.abdelrhamane.dufaux.jass.models.record;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
+import org.apache.commons.io.FilenameUtils;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -28,6 +40,8 @@ public class JassWall extends OrmLiteBaseActivity<DatabaseHelper> {
 
     private ListView listView;
     private Button newSound;
+    private Button fromInternet;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +57,16 @@ public class JassWall extends OrmLiteBaseActivity<DatabaseHelper> {
                 startActivity(intent);
             }
         });
+
+        fromInternet = (Button) findViewById(R.id.Main_activity_FromInternet);
+        fromInternet.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(JassWall.this, DownloadActivity.class);
+                startActivity(intent);
+            }
+        });
+
         LoadList();
     }
 
@@ -58,6 +82,11 @@ public class JassWall extends OrmLiteBaseActivity<DatabaseHelper> {
         this.LoadList();
     }
 
+
+    public void LoadListFromArray(ArrayList<record> results){
+
+    }
+    
     public void LoadList() {
         // Listing des sons
         RuntimeExceptionDao<record, Integer> simpleDao = null;
@@ -127,5 +156,7 @@ public class JassWall extends OrmLiteBaseActivity<DatabaseHelper> {
                 });
         alertDialog.show();
     }
+
+
 
 }

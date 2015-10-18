@@ -57,7 +57,7 @@ public class recorder_activity extends OrmLiteBaseActivity<DatabaseHelper> {
         stop_play.setBackgroundResource(R.color.gris);
         timerLabel.setText(String.valueOf(timer));
         state = State_E.RECORDABLE;
-        this.enregistrement = new record((new Date().getTime()) + ".3gp");
+        this.enregistrement = new record((new Date().getTime()) + ".mp3");
     }
 
 

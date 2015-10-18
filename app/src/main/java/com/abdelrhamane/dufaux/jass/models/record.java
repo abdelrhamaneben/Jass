@@ -108,6 +108,10 @@ public class record {
 
 
 
+    public String getFilePath(){
+        return  this.outDirectory + this.filename;
+    }
+
     // Media Functions
 
     /**

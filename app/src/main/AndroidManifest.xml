@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.abdelrhamane.dufaux.jass" >
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.AUDIO_OUTPUT_FLAG_FAST" />
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +23,12 @@
         </activity>
         <activity
             android:name=".recorder_activity"
-            android:label="@string/title_activity_recorder_activity" >
+            android:label="@string/title_activity_recorder_activity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".DownloadActivity"
+            android:label="@string/title_activity_download" >
         </activity>
     </application>
 

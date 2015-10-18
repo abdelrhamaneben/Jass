@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Main"
-    android:id="@+id/MainLayout">
+    android:id="@+id/MainLayout"
+    android:clickable="true">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,7 +14,8 @@
         android:text="@string/Jass"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@+id/Main_activity_FromInternet"
+        android:layout_toEndOf="@+id/Main_activity_FromInternet" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,38 +29,52 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nouveau Son"
+        android:text="@string/newSon"
         android:id="@+id/Main_activity_NewSound"
-        android:layout_marginTop="40dp"
         android:textColor="@android:color/primary_text_dark_nodisable"
         android:background="@color/bleu"
+        android:layout_marginTop="20dp"
+        android:width="150dp"
         android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2" />
-
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/listRecord"
-        android:layout_below="@+id/Main_activity_NewSound"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="47dp"
-        android:longClickable="true"
-        android:listSelector="@android:color/darker_gray"
-        android:scrollingCache="false"
-        android:clickable="true"
-        android:cacheColorHint="@android:color/darker_gray" />
+        android:layout_alignParentEnd="true" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/listRecord"
-        android:layout_alignLeft="@+id/Main_activity_NewSound"
-        android:layout_alignStart="@+id/Main_activity_NewSound">
+        android:id="@+id/relativeLayout"
+        android:layout_alignBottom="@+id/listRecord"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@+id/Main_activity_NewSound">
 
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listRecord"
+            android:longClickable="true"
+            android:listSelector="@android:color/darker_gray"
+            android:scrollingCache="false"
+            android:clickable="true"
+            android:cacheColorHint="@android:color/darker_gray"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/frominternet"
+        android:id="@+id/Main_activity_FromInternet"
+        android:width="150dp"
+        android:layout_alignTop="@+id/Main_activity_NewSound"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="false"
+        android:background="@color/bleu"
+        android:textColor="@android:color/primary_text_dark_nodisable" />
 
 </RelativeLayout>

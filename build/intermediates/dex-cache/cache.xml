@@ -2,46 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/home/dufaux/AndroidStudioProjects/Jass/app/libs/ormlite-android-4.48.jar"
+        jar="/home/dufaux/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/b1b6ea3b7e4aa4f492509a4952029cd8e48019ad/commons-io-2.4.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="afa06f539a4026c10b247386312aa67404b80a16">
-        <dex dex="/home/dufaux/AndroidStudioProjects/Jass/app/build/intermediates/pre-dexed/debug/ormlite-android-4.48-59e1252cd467861f0a5df603a92d02dedebf8377.jar" />
-    </item>
-    <item
-        jar="/home/dufaux/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="/home/dufaux/AndroidStudioProjects/Jass/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-a4e3b798d09d00fb949c8a2056592e5f844ac1c5.jar" />
-    </item>
-    <item
-        jar="/home/dufaux/AndroidStudioProjects/Jass/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/home/dufaux/AndroidStudioProjects/Jass/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-8d2ce0b4d8060f0400914f1db79b543864ea5e9b.jar" />
-    </item>
-    <item
-        jar="/home/dufaux/AndroidStudioProjects/Jass/app/libs/ormlite-core-4.48.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5">
-        <dex dex="/home/dufaux/AndroidStudioProjects/Jass/app/build/intermediates/pre-dexed/debug/ormlite-core-4.48-395e5194a537a8a29c0ad0a40c91f36d3aa925a1.jar" />
-    </item>
-    <item
-        jar="/home/dufaux/AndroidStudioProjects/Jass/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/home/dufaux/AndroidStudioProjects/Jass/app/build/intermediates/pre-dexed/debug/classes-35d66efe10aa86e34f86a895b8429e0637ebfffa.jar" />
-    </item>
-    <item
-        jar="/home/dufaux/AndroidStudioProjects/Jass/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="/home/dufaux/AndroidStudioProjects/Jass/app/build/intermediates/pre-dexed/debug/classes-5f974f20573dc0cc6b5dea6d5f045ccd0138edd3.jar" />
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="/home/dufaux/AndroidStudioProjects/Jass/app/build/intermediates/pre-dexed/debug/commons-io-2.4-13db16d028b463cf024fef099d2fb3d3a24266b4.jar" />
     </item>
 
 </items>

@@ -9,5 +9,12 @@
     <string name="Stop">Stop</string>
     <string name="title_activity_recorder_activity">recorder_activity</string>
     <string name="retour">retour</string>
+    <string name="newSon">Enregistrer</string>
+    <string name="fromlocal">From Local</string>
+    <string name="frominternet">Télécharger</string>
+    <string name="title_activity_download">DownloadActivity</string>
+    <string name="urlexemple">http://www.exemple.com/fichier.mp3</string>
+    <string name="download_urllabel">Entrez une url ci dessous</string>
+    <string name="downloadbutton">Download</string>
 
 </resources>
