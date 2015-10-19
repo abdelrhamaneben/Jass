@@ -16,5 +16,6 @@
     <string name="urlexemple">http://www.exemple.com/fichier.mp3</string>
     <string name="download_urllabel">Entrez une url ci dessous</string>
     <string name="downloadbutton">Download</string>
+    <string name="labelfromserver">Téléchargeables depuis notre serveur:</string>
 
 </resources>
