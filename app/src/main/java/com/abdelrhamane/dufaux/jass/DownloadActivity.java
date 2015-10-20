@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.abdelrhamane.dufaux.jass.Exceptions.InvalidFileTypeException;
@@ -99,7 +100,7 @@ public class DownloadActivity extends OrmLiteBaseActivity<DatabaseHelper> {
 
 
     public void LoadListDownloadable(List<String> liste) {
-        System.out.println("LOADLIST");
+
         //RuntimeExceptionDao<record, Integer> simpleDao = null;
         try {
             //simpleDao = getHelper().getRuntimeExceptionDao(record.class);
@@ -223,8 +224,6 @@ public class DownloadActivity extends OrmLiteBaseActivity<DatabaseHelper> {
                 return new InvalidFileTypeException(extension+" n'est pas une extension valide ");
             }
 
-            System.out.println("BASENAME = "+baseName+", FILENAME = "+filename);
-
             //enregistre record
             record r = new record(filename);
             r.setName(baseName);
@@ -255,7 +254,7 @@ public class DownloadActivity extends OrmLiteBaseActivity<DatabaseHelper> {
                 //create a new file, specifying the path, and the filename
                 //which we want to save the file as.
 
-                System.out.println("creation file = "+filePath);
+
                 File file = new File(filePath);
 
                 //this will be used to write the downloaded data into the file we created
@@ -294,7 +293,7 @@ public class DownloadActivity extends OrmLiteBaseActivity<DatabaseHelper> {
                 try {
                     simpleDao = getHelper().getRuntimeExceptionDao(record.class);
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
+
                     return e;
                 }
                 r.save(simpleDao);
@@ -323,7 +322,6 @@ public class DownloadActivity extends OrmLiteBaseActivity<DatabaseHelper> {
             JSONArray array = null;
             try {
                 array = getJSONFromUrl(urls[0]);
-                System.out.println(array);
             } catch (IOException e) {
                 error = true;
                 e.printStackTrace();
@@ -331,7 +329,7 @@ public class DownloadActivity extends OrmLiteBaseActivity<DatabaseHelper> {
                 error = true;
                 e.printStackTrace();
             }
-            System.out.println("FIN DE DoInBackground");
+
             return array;
         }
 
@@ -343,10 +341,8 @@ public class DownloadActivity extends OrmLiteBaseActivity<DatabaseHelper> {
 
         // This is called when doInBackground() is finished
         protected void onPostExecute(JSONArray result) {
-            System.out.println("DEBUT DE onPostExecute");
-            System.out.println(result);
-            System.out.println(error);
-
+            ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar);
+            pb.setVisibility(View.INVISIBLE);
             if(error) {
                 display_alert("Impossible de recuperer la liste du serveur.");
             }

@@ -88,7 +88,7 @@ public class WallItemAdapter extends ArrayAdapter<record> {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
                 alertDialog.setTitle("Confirmer la suppression...");
                 alertDialog.setMessage("Êtes-vous sur de vouloir supprimer cet élément?");
-                alertDialog.setIcon(R.drawable.button_delete);
+                alertDialog.setIcon(R.drawable.button_delete_32);
 
                 alertDialog.setPositiveButton("CONFIRMER", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

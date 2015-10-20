@@ -76,4 +76,14 @@
         android:background="@color/bleu"
         android:textColor="@android:color/primary_text_dark_nodisable" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button"
+        android:layout_above="@+id/Main_activity_NewSound"
+        android:layout_toLeftOf="@+id/textView2"
+        android:layout_toStartOf="@+id/textView2"
+        style="@android:style/Widget.Toolbar.Button.Navigation" />
+
 </RelativeLayout>
